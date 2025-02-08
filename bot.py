@@ -3,10 +3,10 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 # URL сервера (замените на ваш Render URL или локальный адрес)
-SERVER_URL = "https://your-render-url.onrender.com"  # Например: https://piranhaclicker.onrender.com
+SERVER_URL = "https://piranhaclickerbot.onrender.com"  # Например: https://piranhaclicker.onrender.com
 
 # Токен бота (замените на ваш токен)
-TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+TOKEN = "7693663885:AAFMIqw6_x69OjAhBhYLKqOeyqKpD2MEBtE"
 
 # Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
