@@ -2,14 +2,15 @@ import requests
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
-SERVER_URL = "https://piranhaclickerbot.onrender.com"  
-# SERVER_URL = "https://your-render-url.onrender.com"  # На Render
+# URL сервера (замените на ваш Render URL или локальный адрес)
+SERVER_URL = "https://your-render-url.onrender.com"  # Например: https://piranhaclicker.onrender.com
 
 # Токен бота (замените на ваш токен)
-TOKEN = "7693663885:AAFMIqw6_x69OjAhBhYLKqOeyqKpD2MEBtE"
+TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 
 # Команда /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
     await update.message.reply_text("Добро пожаловать! Используйте команды для взаимодействия.")
 
 # Обработка кликов
@@ -27,8 +28,9 @@ async def handle_click(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Отправка данных на сервер
     url = f"{SERVER_URL}/save-progress"
+    print("Отправляем данные на сервер:", url, data)  # Логирование отправляемых данных
     response = requests.post(url, json=data)
-    print("Ответ сервера:", response.status_code, response.text)  # Логирование ответа
+    print("Ответ сервера:", response.status_code, response.text)  # Логирование ответа сервера
 
     if response.status_code == 200:
         await update.message.reply_text("Прогресс сохранен!")
